@@ -9,7 +9,8 @@ ENV INSTALL_CAESAR_DIR ${INSTALL_BASE_DIR}/caesar
 
 # build container
 RUN cd $SOURCE_BASE_DIR &&\
-    git clone https://github.com/SKA-INAF/caesar
+    git clone https://github.com/SKA-INAF/caesar &&\
+    cd &SOURCE_CAESAR_DIR && git checkout devel
 
 RUN mkdir $SOURCE_CAESAR_DIR/build_caesar && \
     mkdir $INSTALL_CAESAR_DIR && \
@@ -39,7 +40,7 @@ RUN cd $SOURCE_CAESAR_DIR/build_caesar && \
     make install
 
 ENV LD_LIBRARY_PATH $INSTALL_CAESAR_DIR/lib:$LD_LIBRARY_PATH
-ENV PATH $INSTALL_CAESAR_DIR/bin:$PATH
+ENV PATH $INSTALL_CAESAR_DIR/bin:$INSTALL_CAESAR_DIR/scripts:$PATH
 
 RUN echo "export LD_LIBRARY_PATH=/opt/caesar/lib:/usr/local/lib/R/site-library/RInside/lib:/opt/root/lib:/lib::/opt/OpenCV/lib:/opt/jsoncpp/lib:/opt/jsoncpp/lib" >> /root/.bashrc && \
     echo "export LD_LIBRARY_PATH=/opt/caesar/lib:/usr/local/lib/R/site-library/RInside/lib:/opt/root/lib:/lib::/opt/OpenCV/lib:/opt/jsoncpp/lib:/opt/jsoncpp/lib" >> /home/openmpi/.bashrc
