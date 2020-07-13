@@ -10,7 +10,7 @@ ENV INSTALL_CAESAR_DIR ${INSTALL_BASE_DIR}/caesar
 # build container
 RUN cd $SOURCE_BASE_DIR &&\
     git clone https://github.com/SKA-INAF/caesar &&\
-    cd &SOURCE_CAESAR_DIR && git checkout devel
+    cd $SOURCE_CAESAR_DIR && git checkout devel
 
 RUN mkdir $SOURCE_CAESAR_DIR/build_caesar && \
     mkdir $INSTALL_CAESAR_DIR && \
