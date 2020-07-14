@@ -41,6 +41,7 @@ RUN cd $SOURCE_CAESAR_DIR/build_caesar && \
 
 ENV LD_LIBRARY_PATH $INSTALL_CAESAR_DIR/lib:$LD_LIBRARY_PATH
 ENV PATH $INSTALL_CAESAR_DIR/bin:$INSTALL_CAESAR_DIR/scripts:$PATH
+ENV CAESAR_DIR /opt/caesar
 
 RUN echo "export LD_LIBRARY_PATH=/opt/caesar/lib:/usr/local/lib/R/site-library/RInside/lib:/opt/root/lib:/lib::/opt/OpenCV/lib:/opt/jsoncpp/lib:/opt/jsoncpp/lib" >> /root/.bashrc && \
     echo "export LD_LIBRARY_PATH=/opt/caesar/lib:/usr/local/lib/R/site-library/RInside/lib:/opt/root/lib:/lib::/opt/OpenCV/lib:/opt/jsoncpp/lib:/opt/jsoncpp/lib" >> /home/openmpi/.bashrc
